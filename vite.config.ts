@@ -13,6 +13,7 @@ export default defineConfig({
 			"@/*": path.resolve(__dirname, "./src/lib/*")
 		}
 	},
+	clearScreen: false,
 	server: {
 		port: 1420,
 		strictPort: true,

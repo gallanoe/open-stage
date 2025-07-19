@@ -33,7 +33,6 @@ export class ChatStore {
             const { done, value } = await reader.read();
             if (done) break;
             if (!this.response) this.response = "";
-            console.log(value);
             this.response += value;
           }
         } catch (error) {
