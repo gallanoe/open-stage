@@ -1,6 +1,8 @@
 <script lang="ts">
     import { useChatStore } from "@/store/chat.svelte";
     import { Pause, ArrowRight } from "@lucide/svelte";
+    import { fly, fade } from 'svelte/transition';
+    import { quintOut } from 'svelte/easing';
     const chatStore = useChatStore();
   
     let inputValue = $state("");
@@ -44,6 +46,7 @@
   )}
     <div
       class="w-full flex {alignment === 'left' ? 'justify-start' : 'justify-end'}"
+      transition:fly={{ y: 20, duration: 400, easing: quintOut }}
     >
       <div
         class="flex flex-col gap-1 {alignment === 'left'
@@ -79,12 +82,14 @@
           )}
         {/each}
         {#if chatStore.isStreaming && chatStore.response}
-          {@render messageBubble("Assistant", chatStore.response, "left")}
+          <div transition:fly={{ y: 20, duration: 400, easing: quintOut }}>
+            {@render messageBubble("Assistant", chatStore.response, "left")}
+          </div>
         {/if}
       </div>
       <div class="sticky bottom-0 left-0 right-0 p-4">
         <div
-          class="input-wrapper focus:outline-1 mx-auto flex flex-row gap-2 py-1 px-1 rounded-2xl bg-neutral-800 w-[70%] max-w-full h-fit border border-neutral-400/40 {chatStore.isStreaming
+          class="input-wrapper focus:outline-1 mx-auto flex flex-row gap-2 py-1 px-1 rounded-2xl bg-neutral-800 w-[70%] max-w-[40rem] h-fit border border-neutral-400/40 {chatStore.isStreaming
             ? 'opacity-50'
             : ''}"
         >
