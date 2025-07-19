@@ -9,7 +9,7 @@ export default defineConfig({
 	plugins: [svelte({ compilerOptions: { runes: true } }), tailwindcss()],
 	resolve: {
 		alias: {
-			$lib: path.resolve('./src/lib')
+			"@": path.resolve(__dirname, "./src")
 		}
 	},
 	server: {
