@@ -2,6 +2,7 @@ export interface Message {
     author: string;
     content: string;
     timestamp: number;
+    isStreaming: boolean;
 }
 
 export interface Chat {

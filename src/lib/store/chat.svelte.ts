@@ -6,7 +6,6 @@ export class ChatStore {
     messages = $state<Message[]>([]);
     controller = $state<AbortController | null>(null);
     isStreaming = $derived(this.controller !== null);
-    response = $state<string | null>(null);
 
     async submitMessage(message: string) {
         message = message.trim();
@@ -15,25 +14,33 @@ export class ChatStore {
         this.messages.push({
             author: 'user',
             content: message,
-            timestamp: Date.now()
+            timestamp: Date.now(),
+            isStreaming: false
         });
 
-        this.controller = new AbortController();
-        const stream = await generateStreamedResponse(
-            this.messages.map((message) => ({
+        this.messages.push({
+            author: 'assistant',
+            content: '',
+            timestamp: Date.now(),
+            isStreaming: true,
+        });
+        const rawMessages = this.messages
+            .map((message) => ({
                 role: message.author as "user" | "assistant",
                 content: message.content
-            })),
+            }));
+        
+        this.controller = new AbortController();
+        const stream = await generateStreamedResponse(
+            rawMessages,
             this.controller.signal
         );
-
         const reader = stream.getReader();
         try {
           while (true) {
             const { done, value } = await reader.read();
             if (done) break;
-            if (!this.response) this.response = "";
-            this.response += value;
+            this.messages.at(-1)!.content += value;
           }
         } catch (error) {
           if (error instanceof Error && error.name !== "AbortError") {
@@ -42,23 +49,14 @@ export class ChatStore {
         } finally {
           reader.releaseLock();
         }
-    
-        if (!this.controller?.signal.aborted && this.response) {
-          this.messages.push({
-            author: 'assistant',
-            content: this.response,
-            timestamp: Date.now()
-          });
-        }
+        this.messages.at(-1)!.isStreaming = false;
         this.controller = null;
-        this.response = null;
     }
 
     abort() {
         if (this.controller) {
             this.controller.abort();
             this.controller = null;
-            this.response = null;
         }
     }
 }

@@ -43,6 +43,7 @@
     author: string,
     content: string,
     alignment: "left" | "right",
+    isStreaming: boolean
   )}
     <div
       class="w-full flex {alignment === 'left' ? 'justify-start' : 'justify-end'}"
@@ -54,11 +55,19 @@
           : 'items-end'} max-w-[60%]"
       >
         <div class="text-xs text-neutral-200">{author}</div>
-        <div
-          class="content-wrapper rounded-lg py-2 px-3 bg-neutral-800/30 shadow-neutral-500/50 text-sm break-words text-neutral-200"
-        >
-          {content}
-        </div>
+        {#if isStreaming && content === ""}
+          <div
+            class="content-wrapper rounded-lg py-2 px-3 text-sm break-words text-neutral-200 animate-pulse"
+          >
+            <i class="animate-spin">Thinking...</i>
+          </div>
+          {:else}
+          <div
+            class="content-wrapper rounded-lg py-2 px-3 bg-neutral-800/30 shadow-neutral-500/50 text-sm break-words text-neutral-200"
+          >
+            {content}
+          </div>
+        {/if}
       </div>
     </div>
   {/snippet}
@@ -79,13 +88,9 @@
             message.author.charAt(0).toUpperCase() + message.author.slice(1),
             message.content,
             message.author === "user" ? "right" : "left",
+            message.isStreaming
           )}
         {/each}
-        {#if chatStore.isStreaming && chatStore.response}
-          <div transition:fly={{ y: 20, duration: 400, easing: quintOut }}>
-            {@render messageBubble("Assistant", chatStore.response, "left")}
-          </div>
-        {/if}
       </div>
       <div class="sticky bottom-0 left-0 right-0 p-4">
         <div
