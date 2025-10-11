@@ -1,4 +1,4 @@
-import type { Message } from "@/state/chat";
+import type { Message } from "@/model/chat";
 import { generateStreamedResponse } from "@/service/chat-service";
 
 export class ChatStore {

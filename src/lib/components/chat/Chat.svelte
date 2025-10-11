@@ -37,7 +37,7 @@
         textarea.focus();
       }
     }
-  </script>
+</script>
   
   {#snippet messageBubble(
     author: string,
