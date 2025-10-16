@@ -1,5 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
-import type { RawMessage } from "@/model/chat";
+import type { RawMessage } from "$lib/model/chat";
 import type { TextDelta } from "@anthropic-ai/sdk/resources";
 
 const client = new Anthropic({

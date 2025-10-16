@@ -1,4 +1,4 @@
-import type { Agent } from "@/model/agent";
+import type { Agent } from "$lib/model/agent";
 
 export class AgentStore {
     agents = $state<Agent[]>([]);

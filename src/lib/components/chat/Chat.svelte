@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { useChatStore } from "@/store/chat.svelte";
+    import { useChatStore } from "$lib/store/chat.svelte";
     import { Pause, ArrowRight } from "@lucide/svelte";
     import { fly, fade } from 'svelte/transition';
     import { quintOut } from 'svelte/easing';

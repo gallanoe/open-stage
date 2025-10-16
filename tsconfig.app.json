@@ -3,7 +3,8 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./src/lib/*"]
+			"$lib": ["./src/lib"],
+			"$lib/*": ["./src/lib/*"]
 		},
 		"target": "ESNext",
 		"useDefineForClassFields": true,

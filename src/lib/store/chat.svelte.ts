@@ -1,5 +1,5 @@
-import type { Message } from "@/model/chat";
-import { generateStreamedResponse } from "@/service/chat-service";
+import type { Message } from "$lib/model/chat";
+import { generateStreamedResponse } from "$lib/service/chat-service";
 
 export class ChatStore {
 

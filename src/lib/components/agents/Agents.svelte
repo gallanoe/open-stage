@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { AgentStore } from "@/store/agent.svelte";
-    import type { Agent } from "@/model/agent";
+    import { AgentStore } from "$lib/store/agent.svelte";
+    import type { Agent } from "$lib/model/agent";
 
     const agentStore = new AgentStore();
 
