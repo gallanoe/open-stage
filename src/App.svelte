@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Chat from "$lib/components/chat/Chat.svelte"
 	import { ModeWatcher } from "mode-watcher"
+	import ThemeToggle from "$lib/components/theme/ThemeToggle.svelte"
 </script>
 
 
@@ -12,5 +12,5 @@
 <main
 	class="w-full h-full bg-background pt-6 p-2 select-none overflow-hidden"
 >
-	<Chat />
+	<ThemeToggle />
 </main>
