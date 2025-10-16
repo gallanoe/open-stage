@@ -1,16 +1,11 @@
 <script lang="ts">
 	import { ModeWatcher } from "mode-watcher"
-	import ThemeToggle from "$lib/components/theme/ThemeToggle.svelte"
+	import Page from "$lib/components/common/Page.svelte"
 </script>
 
 
 <ModeWatcher />
-<div data-tauri-drag-region class="w-full h-[28px] min-h-[28px] flex justify-center items-center text-sm font-bold select-none backdrop-opacity-0 fixed top-0 left-0 z-50 cursor-default">
+<div data-tauri-drag-region class="w-full h-[28px] min-h-[28px] flex justify-center items-center text-sm font-bold select-none backdrop-opacity-0 cursor-default">
 	OpenStage
 </div>
-
-<main
-	class="w-full h-full bg-background pt-6 p-2 select-none overflow-hidden"
->
-	<ThemeToggle />
-</main>
+<Page />
