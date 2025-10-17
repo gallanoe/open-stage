@@ -1,11 +1,20 @@
 <script lang="ts">
-	import { ModeWatcher } from "mode-watcher"
-	import Page from "$lib/components/common/Page.svelte"
+	import { ModeWatcher } from 'mode-watcher';
+	import Layout from '$lib/components/common/Layout.svelte';
 </script>
 
-
 <ModeWatcher />
-<div data-tauri-drag-region class="w-full h-[28px] min-h-[28px] flex justify-center items-center text-sm font-bold select-none backdrop-opacity-0 cursor-default">
-	OpenStage
+<div class="h-full w-full flex flex-col">
+	<div
+		data-tauri-drag-region
+		class="flex-none flex h-[28px] min-h-[28px] w-full cursor-default items-center justify-center text-sm font-bold select-none bg-sidebar"
+	>
+		OpenStage
+	</div>
+	<div class="grow min-h-0 h-[calc(100vh-28px)] max-h-[calc(100vh-28px)]">
+		<Layout/>
+	</div>
 </div>
-<Page />
+<!-- <div class="h-full w-full flex flex-col">
+	<Layout/>
+</div> -->

@@ -1,4 +1,7 @@
-import type { Preview } from '@storybook/svelte-vite';
+import type { Preview, SvelteRenderer } from '@storybook/svelte-vite';
+import { withThemeByClassName } from '@storybook/addon-themes';
+
+import '../src/app.css';
 
 const preview: Preview = {
 	parameters: {
@@ -14,8 +17,17 @@ const preview: Preview = {
 			// 'error' - fail CI on a11y violations
 			// 'off' - skip a11y checks entirely
 			test: 'todo'
-		}
-	}
+		},
+	},
+	decorators: [
+		withThemeByClassName<SvelteRenderer>({
+			themes: {
+				light: '',
+				dark: 'dark'
+			},
+			defaultTheme: 'light'
+		})
+	]
 };
 
 export default preview;

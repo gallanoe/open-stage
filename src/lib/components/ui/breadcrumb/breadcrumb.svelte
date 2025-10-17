@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { cn, type WithElementRef } from "$lib/utils.js";
+	import type { WithElementRef } from "$lib/utils.js";
 	import type { HTMLAttributes } from "svelte/elements";
 
 	let {
@@ -10,15 +10,12 @@
 	}: WithElementRef<HTMLAttributes<HTMLElement>> = $props();
 </script>
 
-<main
+<nav
 	bind:this={ref}
-	data-slot="sidebar-inset"
-	class={cn(
-		"bg-background relative flex w-full flex-1 flex-col",
-		"md:peer-data-[variant=inset]:rounded-tl-xl md:peer-data-[variant=inset]:shadow-sm",
-		className
-	)}
+	data-slot="breadcrumb"
+	class={className}
+	aria-label="breadcrumb"
 	{...restProps}
 >
 	{@render children?.()}
-</main>
+</nav>
