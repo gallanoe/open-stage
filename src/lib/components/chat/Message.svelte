@@ -25,29 +25,6 @@
 	}
 </script>
 
-<!-- <Item.Root variant="outline">
-	<Item.Media>
-		<Avatar.Root class="size-10">
-			<Avatar.Image src={image} alt={name} />
-			<Avatar.Fallback class="bg-primary text-primary-foreground">
-				{name.charAt(0).toUpperCase()}
-			</Avatar.Fallback>
-		</Avatar.Root>
-	</Item.Media>
-	<Item.Content>
-		<Item.Title>
-			{name}
-		</Item.Title>
-		<Item.Description>
-			{secondaryName}
-		</Item.Description>
-		<Separator orientation="horizontal" class="my-2"></Separator>
-		<div class="text-sm text-foreground leading-relaxed">
-			{content}
-		</div>
-	</Item.Content>
-</Item.Root> -->
-
 <div class="flex gap-3 p-4 rounded-lg border border-border">
 	<div class="flex-shrink-0">
 		<Avatar.Root class="size-10">
@@ -79,7 +56,7 @@
 		
 		{#if showThoughts && thoughts}
 			<div 
-				class="mb-3 p-3 bg-muted/50 rounded-md text-sm text-muted-foreground"
+				class="mb-2 p-2 bg-muted/50 rounded-md text-sm text-muted-foreground"
 				in:slide={{ duration: 200, easing: quintOut }}
 				out:slide={{ duration: 150, easing: quintOut }}
 			>
