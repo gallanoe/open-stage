@@ -2,6 +2,7 @@
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
 	import * as Item from '$lib/components/ui/item/index.js';
 	import { Toggle } from '$lib/components/ui/toggle/index.js';
+	import { Skeleton } from '$lib/components/ui/skeleton/index.js';
 
 	import { Brain } from '@lucide/svelte';
 	import { slide, fade } from 'svelte/transition';
@@ -13,10 +14,11 @@
 		secondaryName: string;
 		image: string;
 		thoughts?: string;
-		content: string;
+		content?: string;
+		isStreaming?: boolean;
 	}
 
-	let { name, secondaryName, image, thoughts, content }: MessageProps = $props();
+	let { name, secondaryName, image, thoughts, content, isStreaming = false }: MessageProps = $props();
 
 	let showThoughts = $state(false);
 
@@ -66,8 +68,16 @@
 			</div>
 		{/if}
   
-		<div class="text-sm text-foreground leading-relaxed">
-			{content}
-		</div>
+		{#if isStreaming && !content}
+			<div class="space-y-3">
+				<Skeleton class="h-3.5 w-full" />
+				<Skeleton class="h-3.5 w-full" />
+				<Skeleton class="h-3.5 w-3/4" />
+			</div>
+		{:else if content}
+			<div class="text-sm text-foreground leading-relaxed">
+				{content}
+			</div>
+		{/if}
 	</div>
 </div>
