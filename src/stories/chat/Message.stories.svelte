@@ -7,6 +7,11 @@
     component: Message,
     tags: ['autodocs'],
     argTypes: {
+      variant: {
+        control: 'select',
+        options: ['left', 'right', 'full'],
+        description: 'Message variant: left (agent), right (user), or full (detailed messages)'
+      },
       name: { 
         control: 'text',
         description: 'The name of the message author'
@@ -44,6 +49,16 @@
 
 <!-- Default story with long content and thoughts -->
 <Story name="Default" />
+
+<!-- Left variant (agent messages) -->
+<Story name="Left Variant" args={{ 
+  variant: 'left'
+}} />
+
+<!-- Right variant (user messages) -->
+<Story name="Right Variant" args={{ 
+  variant: 'right'
+}} />
 
 <!-- Story showing streaming state (no content) -->
 <Story name="Streaming (No Content)" args={{ 
