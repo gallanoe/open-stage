@@ -20,6 +20,13 @@
     args: {
       messages: [
         {
+          role: 'director',
+          name: '',
+          secondaryName: '',
+          image: '',
+          content: 'A new conversation begins on a quiet afternoon...'
+        },
+        {
           role: 'user',
           name: 'Alice',
           secondaryName: 'User',
@@ -50,6 +57,13 @@
           content: 'I don\'t have access to real-time weather data, but you can check your local weather forecast online or through a weather app.'
         },
         {
+          role: 'director',
+          name: '',
+          secondaryName: '',
+          image: '',
+          content: 'The conversation shifts to more technical matters...'
+        },
+        {
           role: 'user',
           name: 'Alice',
           secondaryName: 'User',
@@ -77,6 +91,13 @@
           image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=32&h=32&fit=crop&crop=face',
           thoughts: 'They want to create a profile component. I should provide a comprehensive example.',
           content: 'Great! Let\'s create a user profile component. We\'ll need to include things like an avatar, name, bio, and maybe some social links. Would you like a functional or class-based component?'
+        },
+        {
+          role: 'director',
+          name: '',
+          secondaryName: '',
+          image: '',
+          content: 'And so their collaborative work begins...'
         }
       ]
     }

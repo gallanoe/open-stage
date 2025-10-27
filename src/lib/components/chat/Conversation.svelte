@@ -19,21 +19,23 @@
 	let { variant = 'narrative', messages = [] }: ConversationProps = $props();
 
 	// Map semantic role to visual variant based on conversation variant
-	function getMessageVariant(role: 'user' | 'character' | 'director'): 'left' | 'right' | 'full' {
+	function getMessageVariant(role: 'user' | 'character' | 'director'): 'left' | 'right' | 'full' | 'director' {
+		// Director messages always use the director variant
+		if (role === 'director') {
+			return 'director';
+		}
+
 		if (variant === 'narrative') {
 			return 'full';
 		}
-		
+
 		// In chat mode, map roles to visual positions
 		if (role === 'user') {
 			return 'right';
 		} else if (role === 'character') {
 			return 'left';
-		} else if (role === 'director') {
-			// Director messages are full-width even in chat mode
-			return 'full';
 		}
-		
+
 		return 'full';
 	}
 </script>
