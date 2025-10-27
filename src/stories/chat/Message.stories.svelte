@@ -9,8 +9,8 @@
     argTypes: {
       variant: {
         control: 'select',
-        options: ['left', 'right', 'full'],
-        description: 'Message variant: left (agent), right (user), or full (detailed messages)'
+        options: ['left', 'right', 'full', 'director'],
+        description: 'Message variant: left (agent), right (user), full (detailed messages), or director (omniscient narration)'
       },
       name: { 
         control: 'text',
@@ -61,7 +61,13 @@
 }} />
 
 <!-- Story showing streaming state (no content) -->
-<Story name="Streaming (No Content)" args={{ 
+<Story name="Streaming (No Content)" args={{
   isStreaming: true,
   content: undefined
+}} />
+
+<!-- Director variant (omniscient narration) -->
+<Story name="Director Variant" args={{
+  variant: 'director',
+  content: 'The room fell silent as the weight of the revelation settled upon them.'
 }} />

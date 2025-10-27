@@ -6,7 +6,7 @@
 	import { quintOut } from 'svelte/easing';
   
 	export interface MessageProps {
-	  variant?: 'left' | 'right' | 'full';
+	  variant?: 'left' | 'right' | 'full' | 'director';
 	  name: string;
 	  secondaryName: string;
 	  image: string;
@@ -215,6 +215,25 @@
 		  {name.charAt(0).toUpperCase()}
 		</Avatar.Fallback>
 	  </Avatar.Root>
+	</div>
+  </div>
+
+{:else if variant === 'director'}
+  <!-- Director variant (omniscient narration, no attribution) -->
+  <div class="flex justify-center">
+	<div class="max-w-[80%] space-y-1.5">
+	  <!-- Message content (borderless, no attribution) -->
+	  {#if isStreaming && !content}
+		<div class="space-y-2">
+		  <Skeleton class="h-3 w-full" />
+		  <Skeleton class="h-3 w-full" />
+		  <Skeleton class="h-3 w-3/4" />
+		</div>
+	  {:else if content}
+		<div class="text-sm text-muted-foreground leading-relaxed text-center italic">
+		  {content}
+		</div>
+	  {/if}
 	</div>
   </div>
 {/if}
